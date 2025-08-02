@@ -1,0 +1,32 @@
+#include <sstream>
+#include <cctype>
+
+using namespace std;
+#include <iostream>
+
+int main() {
+    string line = "x = y + 5 ;";
+    stringstream ss(line);
+    string token;
+
+    while (ss >> token) {
+        if (token == "+")
+            cout << "Next token is: ADD_OP\t\tNext lexeme is " << token << endl;
+        else if (token == "-")
+            cout << "Next token is: SUB_OP\t\tNext lexeme is " << token << endl;
+        else if (token == "*")
+            cout << "Next token is: MULT_OP\t\tNext lexeme is " << token << endl;
+        else if (token == "/")
+            cout << "Next token is: DIV_OP\t\tNext lexeme is " << token << endl;
+        else if (token == "=")
+            cout << "Next token is: ASSIGN_OP\tNext lexeme is " << token << endl;
+        else if (token == ";")
+            cout << "Next token is: SEMICOLON\tNext lexeme is " << token << endl;
+        else if (isdigit(token[0]))
+            cout << "Next token is: INT_LIT\t\tNext lexeme is " << token << endl;
+        else
+            cout << "Next token is: IDENT\t\tNext lexeme is " << token << endl;
+    }
+
+    return 0;
+}
